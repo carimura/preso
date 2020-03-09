@@ -8,23 +8,34 @@ public class Instanceof {
     Object t = LocalDate.now();
 
     if (t instanceof LocalDate) {
-      LocalDate now = (LocalDate) t;
-      System.out.println("Today is " + now.getDayOfWeek().toString());
+      LocalDate today = (LocalDate) t;
+      showImage("Two days ago it was ", today.minusDays(2));
     }
 
-    if (t instanceof LocalDate l) {
-      System.out.println("Sounds like someone had a case of the " + l.minusDays(1).getDayOfWeek().toString() + "s yesterday...");
-      var imgurl = "https://3.bp.blogspot.com/-MhtB2_N6aeA/TkluAPDNcNI/AAAAAAAAAd0/R_CJKns_hMc/s1600/A+case+of+the+mondays.jpg";
-      try {
-        ProcessBuilder pb = new ProcessBuilder("img", imgurl);
-        pb.inheritIO();
-        Process s = pb.start();
-        s.waitFor();
-      } catch (Exception e) {
-        // e
-      }
+    if (t instanceof LocalDate day) {
+      showImage("Yesterday it was ", day.minusDays(1));
+      showImage("Today is ", day);
     }
+  }
 
+
+  private static void showImage(String welcome, LocalDate day) {
+    System.out.println("\n\n" + welcome + day.getDayOfWeek().toString());
+    var mood = switch (day.getDayOfWeek()) {
+      case MONDAY -> "https://3.bp.blogspot.com/-MhtB2_N6aeA/TkluAPDNcNI/AAAAAAAAAd0/R_CJKns_hMc/s1600/A+case+of+the+mondays.jpg";
+      case TUESDAY, WEDNESDAY, THURSDAY -> "https://media.giphy.com/media/W29Ww6PVetRDyGxMkC/giphy.gif";
+      case FRIDAY -> "https://media.giphy.com/media/fw2caEoXBisMJwksAu/giphy-downsized.gif";
+      case SATURDAY, SUNDAY -> "https://media.giphy.com/media/PjaQaNkMyHquc/giphy-downsized.gif";
+    };
+
+    try {
+      ProcessBuilder pb = new ProcessBuilder("img", mood);
+      pb.inheritIO();
+      Process s = pb.start();
+      s.waitFor();
+    } catch (Exception e) {
+      // e
+    }
   }
 
 }
