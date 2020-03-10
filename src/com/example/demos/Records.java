@@ -17,53 +17,40 @@ public class Records {
 
 }
 
-//final class Point {
-//  public final int x;
-//  public final int y;
-//
-//  public Point(int x, int y) {
-//    this.x = x;
-//    this.y = y;
-//  }
-//
-//  public int getX() {
-//    return this.x;
-//  }
-//
-//  public int getY() {
-//    return this.y;
-//  }
-//
-//  public boolean equals(Point p) {
-//    if ((this.x == p.x) && (this.y == p.y)) {
-//      return true;
-//    }
-//    return false;
-//  }
-//
-//  public String toString() {
-//    return "x = " + this.x + ", y = " + this.y;
-//  }
-//}
+final class Point {
+  public final int x;
+  public final int y;
 
-
-
-record Point(int x, int y) {
-  public Point {
-    if (x == 3) {
-      this.x = 4;
-    } else {
-      this.x = x;
-    }
+  public Point(int x, int y) {
+    this.x = x;
+    this.y = y;
   }
 
-  @Override
+  public int getX() {
+    return this.x;
+  }
+
+  public int getY() {
+    return this.y;
+  }
+
+  public boolean equals(Point p) {
+    if ((this.x == p.x) && (this.y == p.y)) {
+      return true;
+    }
+    return false;
+  }
+
   public String toString() {
-    return "overridden toString: x = " + this.x + ", y = " + this.y;
+    return "x = " + this.x + ", y = " + this.y;
   }
 }
 
 
+//record Point(int x, int y) {}
+
+
+//record Point(int x, int y) {
 //  public Point {
 //    if (x == 3) {
 //      this.x = 4;
@@ -76,3 +63,5 @@ record Point(int x, int y) {
 //  public String toString() {
 //    return "overridden toString: x = " + this.x + ", y = " + this.y;
 //  }
+//}
+
