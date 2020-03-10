@@ -9,11 +9,11 @@ public class Instanceof {
 
     if (t instanceof LocalDate) {
       LocalDate today = (LocalDate) t;
-      showImage("Two days ago it was ", today.minusDays(2));
+      showImage("Two days ago was ", today.minusDays(2));
     }
 
     if (t instanceof LocalDate day) {
-      showImage("Yesterday it was ", day.minusDays(1));
+      showImage("Yesterday was ", day.minusDays(1));
       showImage("Today is ", day);
     }
   }
